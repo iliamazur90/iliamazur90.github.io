@@ -1,0 +1,41 @@
+/* сброс стандартных параметров браузера */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* задаём размер поля и выравниваем по центру */
+body {
+  display: block;
+  margin: auto;
+  width: 100vw;
+  height: 100vh;
+  align-items: center; /*по центру*/
+  background-color: black;
+}
+
+/* задаём цвет поля и увеличиваем по высоте экрана*/
+.main-container {
+  display: block;
+  margin: auto;
+  min-height: 97%;
+  min-width: 90%;
+  border: 0.3vh solid #a0142b;
+  background-color: #008075; /* фон поля*/
+  filter: drop-shadow(0px 0px 14px #a0142b);
+}
+
+.game-field{
+  position: relative;
+  z-index: 2;
+}
+.ver {
+  display: block;
+  height: 3%;
+  font-size: 2vh;
+  text-align: center; /*по центру*/
+  color: aliceblue;
+  background-color: #a0142b;
+  filter: drop-shadow(-3px -3px 5px #271d1a);
+}

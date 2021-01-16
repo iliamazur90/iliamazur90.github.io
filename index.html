@@ -1,1 +1,207 @@
-Hello my friend
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Pangolin&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="./css/buttons.css" />
+  <link rel="stylesheet" href="./css/outs.css" />
+  <link rel="stylesheet" href="./css/cards.css" />
+
+  <link rel="shortcut icon" href="favicon.png" type="image/png">
+  <title>21 (Очко)</title>
+
+  <script src="js/imagePreloader.js" defer></script>
+  <script src="js/cardsArray.js" defer></script>
+  <script src="js/const.js" defer></script>
+  <script src="js/deck.js" defer></script>
+  <script src="js/settings.js" defer></script>
+  <script src="js/gamePlay.js" defer></script>
+  <script src="js/summin.js" defer></script>
+  <script src="js/open.js" defer></script>
+  <script src="js/menus.js" defer></script>
+  <script src="js/timer.js" defer></script>
+
+  <audio id="click" src="./audio/click.wav"></audio>
+  <audio id="shuffle" src="./audio/shuffle.wav"></audio>
+  <audio id="put1" src="./audio/put1.wav"></audio>
+  <audio id="put2" src="./audio/put2.wav"></audio>
+  <audio id="put3" src="./audio/put3.wav"></audio>
+  <audio id="open" src="./audio/open.wav"></audio>
+</head>
+
+<body>
+  <div class="main-container">
+
+    <!-- menus container -->
+    <div class="wrapper-menus">
+      <button class="b-menu" id="b-start">Новая игра</button>
+      <button class="b-menu" id="b-how-to-play">Как играть</button>
+      <button class="b-menu" id="b-sounds">Звуки</button>
+      <div class="b-menu" id="timer"></div>
+    </div>
+
+    <div class="wrapper-how-to-play-menu">
+      <div class="b-menu"></div>
+      <button class="b-menu" id="b-esc">Назад</buton>
+        <button class="b-menu" id="b-rules">Правила</buton>
+          <button class="b-menu" id="b-scores">Очки</button>
+    </div>
+
+    <!-- container for settings -->
+    <div class="pop-up" id="settings" hidden>
+      <input type="checkbox" name="ace-equals-one" id="ace-equals-one">
+      Туз = 1 очко
+      <br>
+      <input type="checkbox" name="ace-plus-ace" id="ace-plus-ace">
+      Золотое очко
+      <br>
+      <input type="checkbox" name="give-one-card" id="give-one-card">
+      Раздавать по 1 карте
+      <br>
+      <input type="checkbox" name="show-scores" id="show-scores">
+      Не показывать очки
+      <br>
+      <button class="b-go">Поехали</button>
+    </div>
+
+
+    <!-- container for rules & scores onclick -->
+    <div class="rules" id="how-to-play" hidden>
+      <p>
+        Как играть.<br>
+        <br>
+        Новая игра.<br>
+        При нажатии появляются параметры игры.<br>
+        * Туз = 1 очко - при переборе<br>
+        туз считается как 1 очко.
+        * Золотое очко - 2 туза это выигрыш<br>
+        * Раздавать по 1 карте<br>
+        * Не показывать очки - <br>
+        во время игры не будут подщитываться очки игрока<br>
+        Нажимая "Поехали" тасуются карты.<br>
+        Раздаётся по две карты.<br>
+        (Если не выбрано "Раздавать по 1 карте")<br>
+        Если в процессе игры нажать "Новая игра",<br>
+        все достижения будут сброшены!.<br>
+        Для подтверждения нужно нажать "ОК"<br>
+
+        <br>
+        Под меню находится табло со счётом.<br>
+        Ниже две кнопки - "Ещё" и "Пас".<br>
+        Если нужно добрать карту - нажимай "Ещё".<br>
+        Если считаешь, что тебе достаточно - нажимай "Пас".<br>
+        Ниже кнопок по обе стороны два табло.<br>
+        Левое с количеством твоих очков.<br>
+        (Если не отмечено "Не показывать очки")
+        Правое, отображает - сколько комп добрал карт.<br>
+        Если он не добирал, указывается что он пасует.<br>
+        Под каждым из табло находятса карты.<br>
+        Слева, лицом вверх, твои карты.<br>
+        Справа, "рубашкой" вверх, карты компа.<br>
+        <br>
+        Во время игры можна перечитать правила.<br>
+        <br>
+        Ещё в меню есть кнопка "Звуки".<br>
+        При нажатии на неё - звук выключается.<br>
+        При последующих нажатиях уровень громкости увеличивается<br>
+        Шаг увеличения громкости 25%.<br>
+        <br>
+        Возле кнопки "Звуки" находится счётчик времени игры.<br>
+      </p>
+    </div>
+
+    <div class="rules" id="rules" hidden>
+      <p>
+        В данной версии игры игра ведется колодой из
+        36-и карт и двумя игроками.
+        В начале игры каждому игроку раздается по 2-е карты. <br>
+        (Если не выбрано "Раздавать по 1 карте")<br>
+        Если у игрока после сдачи в картах 21 очко
+        то он автоматически выигрывает и должен вскрыть карты<br>
+        Если не получилось собрать 21 очко сразу после сдачи,
+        то игрок может добирать карты. <br>
+        Максимум после сдачи можно взять 3 карты.
+        (Или 4 если выбрано "Раздавать по 1 карте")
+        Если Вы считаете достаточным количество своих очков,
+        то можете передать ход другим игрокам. <br>
+        После того, как все игроки сделают свой ход,
+        можно открыть карты.
+        Побеждает игрок, набравший 21 очко или
+        ближайшее к числу 21 количество очков. <br>
+        Ближайшими считаются:
+        20, 19, 18, 17 и 16 очков. <br>
+        Если игрок набрал больше, чем 21 очко,
+        он проигрывает игру сразу, как перебравший.
+        (Исключением является 2 туза - Золотое очко).
+        Это автоматическая победа. <br>
+        Если игроки набрали одинаковое количество очков,
+        то игра считается розыгрышем и следует пересдача карт.
+      </p>
+    </div>
+
+    <div class="rules" id="scores" hidden>
+      <p>
+        Валет - 2 очка,
+        <br>
+        Дама - 3 очка,
+        <br>
+        Король - 4 очка,
+        <br>
+        Шестёрка - 6 очков,
+        <br>
+        Семёрка - 7 очков,
+        <br>
+        Восьмёрка - 8 очков,
+        <br>
+        Девятка - 9 очков,
+        <br>
+        Десятка - 10 очков,
+        <br>
+        Туз - 11 очков или 1*
+      </p>
+    </div>
+
+    <!-- game field - results, buttons, cards -->
+    <div class="game-field">
+
+      <div aria-label="Счёт" class="result">Здесь будут результаты игры</div>
+
+      <div class="wrapper-buttons">
+        <button disabled class="b-1"></button>
+        <button disabled class="b-2"></button>
+      </div>
+
+      <div class="wrapper-outs">
+        <div class="user-out">Твои очки</div>
+        <div class="comp-out">Очки компа</div>
+      </div>
+
+      <div class="wrapper-cards" aria-label="Здесь будут твои карты и карты компа">
+        <div aria-label="Здесь будут твои карты">
+          <div class="u-cards">
+            <div class="face-area"></div>
+          </div>
+
+        </div>
+        <div class="c-cards" aria-label="Здесь будут карты компа">
+          <div class="face-area"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- <div class="zooming">
+      <button class="zoom-out">-</button>
+      <button class="zoom-in">+</button>
+    </div> -->
+
+  </div>
+
+
+  <div class="ver">ver.1.25</div>
+</body>
+
+</html>

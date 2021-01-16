@@ -1,0 +1,76 @@
+button, #timer {
+  display: block;
+  font-weight: bolder;
+  font-size: 2vh;
+  font-family: 'Pangolin', cursive;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+#timer{
+  padding-top: 1vh;
+}
+
+.b-menu{
+  margin-bottom: 0.3%;
+  width: 25%;
+  height: 5vh;
+  border: 0.3vh solid slategray;
+  background-color: #a0142b;
+  color: aliceblue;
+  filter: drop-shadow(1px 1px 2px #271d1a);
+}
+
+.wrapper-menus {
+  display: flex;
+  margin-bottom: 1%;
+  width: 100%;
+}
+
+.wrapper-how-to-play-menu{
+  display: none;
+  margin-bottom: 1%;
+  width: 100%;
+}
+
+.b-go{
+  margin: 3.5vh auto ;
+  width: 30%;
+  height: 4vh;
+  border: 0.3vh solid slategray;
+  font-family: 'Pangolin', cursive;
+  color: #ffebda;
+  background-color: #2b7618;
+  filter: drop-shadow(1px 1px 3px #312e20);
+}
+
+.b-1, .b-2{
+  margin: 3.5vh auto ;
+  width: 25%;
+  height: 4vh;
+  border: 0.3vh solid #d6a278;
+  font-family: 'Pangolin', cursive;
+  color: #ffebda;
+  background-color: #7b7668;
+  filter: drop-shadow(4px 4px 4px #221917);
+}
+
+/* not avaleble
+.zooming{
+  margin: 0 auto;
+  position:fixed;
+   left:45%;
+   bottom:5%;
+   height:30px;
+   width:100%;
+}
+
+.zoom-out, .zoom-in{
+  display: inline-block;  
+  width: 5%;
+  height: 4vh;
+  border: 0.3vh solid slategray;
+  background-color: #a0142b;
+  color: aliceblue;
+  filter: drop-shadow(1px 1px 2px #271d1a);
+} */
